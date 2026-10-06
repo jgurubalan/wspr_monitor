@@ -1,0 +1,89 @@
+# WSPR Multi-Band Monitor
+# RTL-SDR based WSPR reception
+
+station:
+  id: "Home-VU24JD"
+  timezone: "Asia/Kolkata"
+
+sdr:
+  type: "rtlsdr"
+  device: 0
+
+  # Wideband IQ capture
+  sample_rate: 2400000
+
+  # RTL-SDR frequency correction
+  ppm: 0
+
+  gain: "auto"
+
+  # Number of IQ samples per processing block
+  block_size: 24000
+
+wspr:
+  mode: "USB"
+
+  # Monitor multiple WSPR bands
+  bands:
+    160m:
+      frequency: 1838100
+      bandwidth: 200
+      enabled: true
+
+    80m:
+      frequency: 3568600
+      bandwidth: 200
+      enabled: true
+
+    60m:
+      frequency: 5287200
+      bandwidth: 200
+      enabled: true
+
+    40m:
+      frequency: 7038600
+      bandwidth: 200
+      enabled: true
+
+    30m:
+      frequency: 10138700
+      bandwidth: 200
+      enabled: true
+
+    20m:
+      frequency: 14097100
+      bandwidth: 200
+      enabled: true
+
+    17m:
+      frequency: 18104600
+      bandwidth: 200
+      enabled: true
+
+    15m:
+      frequency: 21096100
+      bandwidth: 200
+      enabled: true
+
+    12m:
+      frequency: 24926100
+      bandwidth: 200
+      enabled: true
+
+    10m:
+      frequency: 28126100
+      bandwidth: 200
+      enabled: true
+
+  # WSPR transmission cycle
+  transmit_period: 120
+
+  # Decoder processing interval
+  decode_interval: 2
+
+  # Allow decoder to search the complete WSPR sub-band
+  decoder_bandwidth: 200
+
+logging:
+  database: "/home/jgurubalan/time-signal_monitor/data/wspr.db"
+  logfile: "/home/jgurubalan/time-signal_monitor/logs/wspr_monitor.log"
